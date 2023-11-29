@@ -51,10 +51,11 @@ export function Profile() {
     //         alert('Error claiming your reward. Please try again.');
     //     }
     // };
-    const handleClaimReward = () => {
+    const handleClaimReward = async () => {
         try {
           console.log('Preparing to claim reward...');
-          write?.(); // Make sure to await the write function
+          const transactionHash = await write?.(); // Await the transaction
+    console.log('Successfully claimed your reward!', transactionHash);
           console.log('Successfully claimed your reward!');
           alert('Successfully claimed your reward!');
         } catch (error) {

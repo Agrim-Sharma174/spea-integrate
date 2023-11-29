@@ -33,10 +33,11 @@ const Participate = () => {
     //         alert('Error.');
     //     }
     // };
-    const handleParticipate = () => {
+    const handleParticipate = async () => {
         try {
           console.log('Preparing to participate...');
-          write?.(); // Make sure to await the write function
+          const transactionHash = await write?.(); // Await the transaction
+    console.log('Successfully participated!', transactionHash);
           console.log('Successful!');
           alert('Successful!');
         } catch (error) {
