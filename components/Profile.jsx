@@ -39,16 +39,27 @@ export function Profile() {
     // according to the wagmi docs, this is the function that will be called when the button is clicked
     const { write } = useContractWrite(config);
 
-    const handleClaimReward = () => {
+    // const handleClaimReward = () => {
+    //     try {
+    //         write?.();
+    //         // The write function executed successfully
+    //         alert('Successfully claimed your reward!');
+    //         console.log('Successfully claimed your reward!');
+    //     } catch (error) {
+    //         // Handle errors if the write function fails
+    //         console.error('Error claiming reward:', error);
+    //         alert('Error claiming your reward. Please try again.');
+    //     }
+    // };
+    const handleClaimReward = async () => {
         try {
-            write?.();
-            // The write function executed successfully
-            alert('Successfully claimed your reward!');
-            console.log('Successfully claimed your reward!');
+          console.log('Preparing to claim reward...');
+          await write?.(); // Make sure to await the write function
+          console.log('Successfully claimed your reward!');
+          alert('Successfully claimed your reward!');
         } catch (error) {
-            // Handle errors if the write function fails
-            console.error('Error claiming reward:', error);
-            alert('Error claiming your reward. Please try again.');
+          console.error('Error claiming reward:', error);
+          alert('Error claiming your reward. Please try again.');
         }
     };
 
@@ -78,7 +89,7 @@ export function Profile() {
                 </div>
             )}
 
-            <button disabled={!write} onClick={handleClaimReward} className='cursor-pointer bg-red-500 font-semibold mt-10 px-2 rounded-sm'>
+            <button onClick={handleClaimReward} className='cursor-pointer bg-red-500 font-semibold mt-10 px-2 rounded-sm'>
                 claim reward
             </button>
         </div>

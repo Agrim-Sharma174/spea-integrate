@@ -21,23 +21,34 @@ const Participate = () => {
     const { write } = useContractWrite(config);
 
     // this is to handle the participate function
-    const handleParticipate = () => {
+    // const handleParticipate = () => {
+    //     try {
+    //         write?.();
+    //         // The write function executed successfully
+    //         alert('Successful!');
+    //         console.log('Successful!');
+    //     } catch (error) {
+    //         // Handle errors if the write function fails
+    //         console.error('Error in participating:', error);
+    //         alert('Error.');
+    //     }
+    // };
+    const handleParticipate = async () => {
         try {
-            write?.();
-            // The write function executed successfully
-            alert('Successful!');
-            console.log('Successful!');
+          console.log('Preparing to participate...');
+          await write?.(); // Make sure to await the write function
+          console.log('Successful!');
+          alert('Successful!');
         } catch (error) {
-            // Handle errors if the write function fails
-            console.error('Error in participating:', error);
-            alert('Error.');
+          console.error('Error', error);
+          alert('Error. Please try again.');
         }
     };
 
     return (
         <div className='pl-5 pt-1 text-lg'>
         {/* here the participate function will be called */}
-            <button disabled={!write} onClick={handleParticipate} className='cursor-pointer bg-red-500 font-semibold px-2 rounded-sm'>
+            <button onClick={handleParticipate} className='cursor-pointer bg-red-500 font-semibold px-2 rounded-sm'>
                 Participate
             </button>
         </div>
