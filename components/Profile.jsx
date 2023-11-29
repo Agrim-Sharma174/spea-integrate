@@ -67,20 +67,24 @@ export function Profile() {
                             key={connector.id}
                             onClick={() => connect({ connector })}
                         >
-                            <div className='mr-4 bg-gray-400 px-2 cursor-pointer'>{connector.name}</div>
+                            {/* <div className='mr-4 bg-gray-400 px-2 cursor-pointer'>{connector.name}</div> */}
+                            <div className={`mr-4 bg-gray-400 px-2 cursor-pointer ${!connector.ready ? 'disabled' : ''}`}>{connector.name}</div>
                             {/* {!connector.ready && ' (unsupported)'}
                             {isLoading &&
                                 connector.id === pendingConnector?.id &&
                                 ' (connecting)'} */}
                         </button>
+
+
                     ))}
                     {error && <div>{error.message}</div>}
                 </div>
-            )}
+            )
+            }
 
             <button disabled={!write} onClick={handleClaimReward} className='cursor-pointer bg-red-500 font-semibold mt-10 px-2 rounded-sm'>
                 claim reward
             </button>
-        </div>
+        </div >
     );
 }
