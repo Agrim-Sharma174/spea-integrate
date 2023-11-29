@@ -2,8 +2,9 @@ import React from 'react';
 import { bsc } from 'wagmi/chains';
 import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
 
+import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
-
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
@@ -14,8 +15,14 @@ import Participate from '@/components/Participate';
 // using the public provider instead of my own api key
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, bsc],
-  [publicProvider()],
-)
+  [
+    jsonRpcProvider({
+      rpc: () => ({
+        http:"https://smart-serene-county.bsc-testnet.quiknode.pro/0311dc2ef709914d244ad8e32adaefd4a70c9735/"
+      }),
+    })
+  ]
+);
 
 // Set up wagmi config
 const config = createConfig({
