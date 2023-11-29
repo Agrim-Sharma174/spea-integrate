@@ -2,7 +2,6 @@ import React from 'react';
 import { bsc } from 'wagmi/chains';
 import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
 
-import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -10,7 +9,6 @@ import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { Profile } from '@/components/Profile';
-import WriteFunc from '@/components/writeFunc';
 import Participate from '@/components/Participate';
 
 // using the public provider instead of my own api key
