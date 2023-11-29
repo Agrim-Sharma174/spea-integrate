@@ -54,8 +54,9 @@ export function Profile() {
     const handleClaimReward = async () => {
         try {
           console.log('Preparing to claim reward...');
-          const transactionHash = await write?.(); // Await the transaction
-    console.log('Successfully claimed your reward!', transactionHash);
+        //   const transactionHash = await write?.(); // Await the transaction
+          await write?.();
+    // console.log('Successfully claimed your reward!', transactionHash);
           console.log('Successfully claimed your reward!');
           alert('Successfully claimed your reward!');
         } catch (error) {
